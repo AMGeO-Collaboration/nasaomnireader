@@ -269,12 +269,12 @@ class omni_downloader(object):
         self.ftpserv = 'spdf.gsfc.nasa.gov'
         self.ftpdir = '/pub/data/omni'
         #Hourly CDF are every six months, 5 minute are every month as are 1 min
-        if self.cdf_or_txt is 'cdf':
+        if self.cdf_or_txt == 'cdf':
             self.cadence_subdir = {'hourly':'omni_cdaweb/hourly','5min':'omni_cdaweb/hro_5min','1min':'omni_cdaweb/hro_1min'}
             self.filename_gen = {'hourly':lambda dt: '%d/omni2_h0_mrg1hr_%d%.2d01_v01.cdf' % (dt.year,dt.year,1 if dt.month < 7 else 7),
                              '5min':lambda dt: '%d/omni_hro_5min_%d%.2d01_v01.cdf' % (dt.year,dt.year,dt.month),
                              '1min':lambda dt: '%d/omni_hro_1min_%d%.2d01_v01.cdf' % (dt.year,dt.year,dt.month) }
-        elif self.cdf_or_txt is 'txt':
+        elif self.cdf_or_txt == 'txt':
             self.cadence_subdir = {'hourly':'low_res_omni','5min':'high_res_omni','1min':'high_res_omni/monthly_1min'}
             self.filename_gen = {'hourly':lambda dt: 'omni2_%d.dat' % (dt.year),
                              '5min':lambda dt: 'omni_5min%d.asc' % (dt.year),
